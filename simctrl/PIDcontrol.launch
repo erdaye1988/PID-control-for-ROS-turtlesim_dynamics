@@ -1,0 +1,39 @@
+<launch>
+  <node
+    pkg = "simctrl"
+    type = "MotionPlanner"
+    name = "motion_plan"
+    launch-prefix = "xterm -e"
+    respawn = "true"
+  >
+    <param name = "mode" value = "1"/>
+  </node>
+
+  <node
+    pkg = "turtlesim_dynamics"
+    type = "turtlesim_dynamics_node"
+    name = "turtle3"
+    respawn = "true"
+  >
+    <param name = "mass" value = "1"/>
+    <param name = "inertia" value = "1"/>
+    <param name = "wind_x" value = "-0"/>
+    <param name = "wind_y" value = "-0"/>
+  </node>
+
+  <node
+    pkg = "simctrl"
+    type = "PIDctrl"
+    name = "PIDcontroller"
+    output = "screen"
+  >
+    <param name = "Kp1" value = "0.90"/>
+    <param name = "Kp2" value = "1.80"/>
+    <param name = "Kd1" value = "0.90"/>
+    <param name = "Kd2" value = "1.80"/>
+    <param name = "Ki1" value = "0.00"/>
+    <param name = "Ki2" value = "0.00"/>
+  </node>
+
+
+</launch>
